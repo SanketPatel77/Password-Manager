@@ -6,5 +6,18 @@ import Login from "./Login";
 import Registration from "./Registration";
 import Passwords from "./Passwords";
 import Logo from "./Logo";
+import Input from "./Input";
+import RegistrationCriteria from "./RegistrationCriteria ";
 
-export { Header, Footer, Contact, Home, Login, Registration, Passwords, Logo };
+export {
+  Header,
+  Footer,
+  Contact,
+  Home,
+  Login,
+  Registration,
+  Passwords,
+  Logo,
+  Input,
+  RegistrationCriteria,
+};

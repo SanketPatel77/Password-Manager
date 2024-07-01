@@ -52,7 +52,7 @@ function Header() {
 
     return (
         <>
-            <header>
+            <header className='sticky top-0 z-10'>
                 <div className='flex justify-between p-2 items-center bg-[#55AD9B] text-[#F1F8E8] w-full'>
                     <img src="" alt="LOGO" />
                     <div className='text-3xl sm:hidden cursor-pointer select-none fixed top-2 right-4 z-50' onClick={handleHamburger}>
@@ -74,7 +74,7 @@ function Header() {
                     </div>
                 </div>
 
-                <div className={`transition-transform duration-200 ease-in-out transform ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} sm:hidden bg-[#55AD9B] text-[#F1F8E8] w-[100%] p-4 fixed top-16 right-0 z-40`}>
+                <div className={`transition-transform duration-200 ease-in-out transform ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} sm:hidden bg-[#55AD9B] text-[#F1F8E8] w-[100%] p-4 fixed top-11 right-0 z-40`}>
                     <div className='flex flex-col items-center'>
                         {navItems.map((data) => (
                             <NavLink key={data.id} to={data.reference} onClick={handleNavLinkClick}>
