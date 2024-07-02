@@ -21,10 +21,10 @@ const RegistrationCriteria = ({ password, className = '' }) => {
 
     return (
         <div className={`p-4 mb-4 rounded bg-white shadow-md ${className}`}>
-            <h3 className="text-lg font-semibold mb-2 text-gray-800">Password Criteria:</h3>
+            <h3 className=" font-semibold mb-4 text-gray-800 text-center text-xl ">Password Criteria:</h3>
             <ul>
                 {Object.keys(criteria).map((key) => (
-                    <li key={key} className="flex items-center mb-1">
+                    <li key={key} className="flex items-center mb-1 p-2">
                         {checks[key] ? (
                             <CheckCircleIcon className="w-5 h-5 text-green-500 mr-2" />
                         ) : (

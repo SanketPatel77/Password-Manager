@@ -5,6 +5,7 @@ import Input from './Input';
 import Button from './Button';
 import RegistrationCriteria from './RegistrationCriteria ';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
+import { Container } from 'postcss';
 
 function Registration() {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
@@ -28,10 +29,11 @@ function Registration() {
     };
 
     return (
-        <div className="max-h-screen flex items-center justify-center bg-gray-100 relative my-auto py-16">
-            <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
-                <h2 className="text-2xl font-bold mb-6 text-gray-800">Register</h2>
-                <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="max-h-screen flex items-center justify-center  relative my-auto py-16 bg-[#D8EFD3]">
+            <div className="bg-white p-8 rounded shadow-md  md:w-[90%] lg:w-[60%] md:flex md:items-center md:justify-center md:gap-10 ">
+
+                <form onSubmit={handleSubmit(onSubmit)} className='bg-white p-2'>
+                    <h2 className="text-2xl font-bold mb-6 text-gray-800">Register</h2>
                     <div className="mb-4">
                         <Input
                             label="Name"
@@ -112,12 +114,12 @@ function Registration() {
                         )}
                     </div>
 
-                    <Button type="submit" bgColor="bg-blue-500" textColor="text-white" className="w-full">
+                    <Button type="submit" bgColor="bg-[#729762] " textColor="text-white" className="w-full font-bold focus:bg-white focus:text-[#729762] focus:border-2  focus:border-[#729762]">
                         Register
                     </Button>
                 </form>
 
-                <RegistrationCriteria password={password} className='absolute left-32 top-52' />
+                <RegistrationCriteria password={password} className='  my-4 h-[400px] max-h-screen flex-col items-center justify-center bg-gray-100 relative py-16' />
             </div>
         </div>
     );
