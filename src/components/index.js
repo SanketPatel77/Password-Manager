@@ -8,6 +8,7 @@ import Passwords from "./Passwords";
 import Logo from "./Logo";
 import Input from "./Input";
 import RegistrationCriteria from "./RegistrationCriteria ";
+import Button from "./Button";
 
 export {
   Header,
@@ -20,4 +21,5 @@ export {
   Logo,
   Input,
   RegistrationCriteria,
+  Button,
 };

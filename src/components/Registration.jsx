@@ -1,11 +1,11 @@
 // Registration.js
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Input from './Input';
-import Button from './Button';
-import RegistrationCriteria from './RegistrationCriteria ';
+// import Input from './Input';
+// import Button from './Button';
+import { Button, Input, RegistrationCriteria } from './index'
+// import RegistrationCriteria from './RegistrationCriteria ';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
-import { Container } from 'postcss';
 
 function Registration() {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
@@ -29,22 +29,22 @@ function Registration() {
     };
 
     return (
-        <div className="max-h-screen flex items-center justify-center  relative my-auto py-16 bg-[#D8EFD3]">
-            <div className="bg-white p-8 rounded shadow-md  md:w-[90%] lg:w-[60%] md:flex md:items-center md:justify-center md:gap-10 ">
+        <div className="min-h-screen flex items-center justify-center py-10 bg-[#D8EFD3] ">
+            <div className="bg-white p-8 rounded shadow-md w-full md:max-w-[80%] lg:max-w-[70%] mx-4 md:mx-auto md:flex md:items-start md:justify-between md:gap-8 lg:gap-10">
 
-                <form onSubmit={handleSubmit(onSubmit)} className='bg-white p-2'>
-                    <h2 className="text-2xl font-bold mb-6 text-gray-800">Register</h2>
-                    <div className="mb-4">
+                <form onSubmit={handleSubmit(onSubmit)} className='bg-white w-full'>
+                    <h2 className="text-2xl font-bold mb-4 text-gray-800">Register</h2>
+                    <div className="mb-2">
                         <Input
                             label="Name"
                             type="text"
                             {...register('name', { required: 'Name is required' })}
                             className={`${errors.name ? 'border-red-500' : 'border-gray-300'}`}
                         />
-                        {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
+                        {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
                     </div>
 
-                    <div className="mb-4">
+                    <div className="mb-2">
                         <Input
                             label="Email"
                             type="email"
@@ -57,9 +57,9 @@ function Registration() {
                             })}
                             className={`${errors.email ? 'border-red-500' : 'border-gray-300'}`}
                         />
-                        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+                        {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                     </div>
-                    <div className="mb-4 relative">
+                    <div className="mb-2 relative">
                         <Input
                             label="Password"
                             type={showPassword ? 'text' : 'password'}
@@ -84,11 +84,11 @@ function Registration() {
                             )}
                         </button>
                         {errors.password && (
-                            <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
+                            <p className="text-red-500 text-sm">{errors.password.message}</p>
                         )}
                     </div>
 
-                    <div className="mb-6 relative">
+                    <div className="mb-4 relative">
                         <Input
                             label="Confirm Password"
                             type={showConfirmPassword ? 'text' : 'password'}
@@ -110,16 +110,18 @@ function Registration() {
                             )}
                         </button>
                         {errors.confirmPassword && (
-                            <p className="text-red-500 text-sm mt-1">{errors.confirmPassword.message}</p>
+                            <p className="text-red-500 text-sm">{errors.confirmPassword.message}</p>
                         )}
                     </div>
 
-                    <Button type="submit" bgColor="bg-[#729762] " textColor="text-white" className="w-full font-bold focus:bg-white focus:text-[#729762] focus:border-2  focus:border-[#729762]">
+                    <Button type="submit" bgColor="bg-[#729762] " textColor="text-white" className="w-full font-bold focus:bg-white focus:text-[#729762] focus:border-2 focus:border-[#729762]">
                         Register
                     </Button>
                 </form>
 
-                <RegistrationCriteria password={password} className='  my-4 h-[400px] max-h-screen flex-col items-center justify-center bg-gray-100 relative py-16' />
+                <div className=" md:flex md:flex-col md:items-center md:justify-center w-full ">
+                    <RegistrationCriteria password={password} className='w-full my-4 h-auto max-h-screen flex-col items-center justify-center bg-gray-100 relative py-16' />
+                </div>
             </div>
         </div>
     );
