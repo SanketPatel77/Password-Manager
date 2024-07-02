@@ -9,6 +9,7 @@ import Logo from "./Logo";
 import Input from "./Input";
 import RegistrationCriteria from "./RegistrationCriteria ";
 import Button from "./Button";
+import PasswordGenerator from "./Password generator/PasswordGenerator";
 
 export {
   Header,
@@ -22,4 +23,5 @@ export {
   Input,
   RegistrationCriteria,
   Button,
+  PasswordGenerator,
 };
