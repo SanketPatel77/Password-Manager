@@ -1,9 +1,11 @@
 import React from 'react'
-import PasswordGenerator from './Password generator/PasswordGenerator'
+import { PasswordGenerator } from './index'
+import Sidebar from './add-password/Sidebar'
 
 function Home() {
     return (
         <>
+
             <PasswordGenerator />
         </>
     )
