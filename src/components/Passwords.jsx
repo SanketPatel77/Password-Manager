@@ -5,6 +5,7 @@ import ShowPassword from './ShowPasswords';
 import './add-password/addPassword.css';
 import Button from './Button';
 import AddPassword from './add-password/AddPassword';
+import { FaPlus } from "react-icons/fa";
 
 function Passwords() {
     const [passwordArray, setPasswordArray] = useState([]);
@@ -33,17 +34,43 @@ function Passwords() {
         setShowAddPassword(true);
     };
 
+    const updatePassword = (updatedPassword, index) => {
+        // Create a copy of the current password array
+        const updatedPasswords = passwordArray.map((password, i) =>
+            i === index ? updatedPassword : password
+        );
+
+        // Update state with the modified password array
+        setPasswordArray(updatedPasswords);
+
+        // Convert the updated passwords array to JSON string
+        const passwordsJSON = JSON.stringify(updatedPasswords);
+
+        // Store the JSON string in localStorage
+        localStorage.setItem('passwords', passwordsJSON);
+
+        // Close the AddPassword form after saving
+        setShowAddPassword(false);
+    };
+
+
+
     return (
         <div className="App">
             <div className='flex p-4'>
-                <Sidebar />
                 {passwordArray.length === 0 ? (
                     <MainContent onAddPassword={handleAddPassword} />
                 ) : (
                     <div>
-                        <ShowPassword passwords={passwordArray} onDelete={handleDeletePassword} />
-                        <Button onClick={handleAddPasswordClick}>Add Password</Button>
-                        {showAddPassword && <AddPassword onClose={() => setShowAddPassword(false)} onAddPassword={handleAddPassword} />}
+                        <ShowPassword passwords={passwordArray} onDelete={handleDeletePassword} onUpdate={updatePassword} />
+                        <button
+                            className={`bg-blue-500 text-white px-4 py-4  hover:bg-blue-600 rounded-full absolute right-32 bottom-32 `}
+                            onClick={handleAddPasswordClick}
+                            style={{ fontSize: '2.5rem' }} // Adjust the font size as needed
+                        >
+                            <FaPlus />
+                        </button>
+                        {showAddPassword && <AddPassword onClose={() => setShowAddPassword(false)} onAddPassword={handleAddPassword} updatePassword={updatePassword} />}
                     </div>
                 )}
             </div>

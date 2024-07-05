@@ -1,42 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
 
-const AddPassword = ({ onClose, onAddPassword }) => {
+const AddPassword = ({ onClose, onAddPassword, updatePassword, password }) => {
     const [form, setForm] = useState({ userName: "", password: "", url: "", notes: "" });
     const [showPassword, setShowPassword] = useState(false);
+
+    useEffect(() => {
+        if (password) {
+            setForm(password); // Initialize form with the provided password data for editing
+        }
+    }, [password]);
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
 
-    const handleClickOutside = (e) => {
-        if (e.target.id === 'modal-overlay') {
-            onClose();
-        }
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Call the prop function to add password to parent component
-        onAddPassword(form);
-        onClose(); // Close the modal after saving
-        // Clear the form after saving
-        setForm({ userName: "", password: "", url: "", notes: "" });
+        if (password) {
+            updatePassword(form); // Update existing password
+        } else {
+            onAddPassword(form); // Add new password
+        }
+        onClose();
     };
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
+    const handleCancel = () => {
+        onClose(); // Close the form without saving changes
+    };
+
     return (
-        <div
-            id="modal-overlay"
-            className="fixed inset-0 bg-black bg-opacity-50 flex justify-end items-start z-50"
-            onClick={handleClickOutside}
-        >
-            <div className="bg-white rounded-l-lg p-6 w-full sm:w-2/3 md:w-1/2 lg:w-1/3 h-full shadow-lg overflow-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white rounded-lg p-6 w-full sm:w-2/3 md:w-1/2 lg:w-1/3 shadow-lg">
                 <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-xl font-semibold">Add Password</h2>
+                    <h2 className="text-xl font-semibold">Edit Password</h2>
                     <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
                         ✖
                     </button>
@@ -98,7 +99,7 @@ const AddPassword = ({ onClose, onAddPassword }) => {
                     </div>
                     <div className="flex justify-between items-center">
                         <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Save</button>
-                        <button type="button" onClick={onClose} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button>
+                        <button type="button" onClick={handleCancel} className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 ml-2">Cancel</button>
                     </div>
                 </form>
             </div>
