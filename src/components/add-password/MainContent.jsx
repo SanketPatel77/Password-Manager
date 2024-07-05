@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import heroImage from '../../assets/hero-lock.jpg';
 import AddPassword from './AddPassword';
 
-const MainContent = () => {
+const MainContent = ({ onAddPassword }) => {
     const [showAddPassword, setShowAddPassword] = useState(false);
 
     const handleAddPasswordClick = () => {
@@ -15,7 +15,7 @@ const MainContent = () => {
 
     return (
         <div className="relative flex flex-grow justify-center items-center p-4">
-            {showAddPassword && <AddPassword onClose={handleCloseAddPassword} />}
+            {showAddPassword && <AddPassword onClose={handleCloseAddPassword} onAddPassword={onAddPassword} />}
             <div className="text-center">
                 <h1 className="text-2xl font-semibold mb-4">All Passwords</h1>
                 <img src={heroImage} alt="Add your first password" className="mx-auto mb-4 w-1/2 md:w-1/4" />
@@ -30,7 +30,6 @@ const MainContent = () => {
                     >
                         Add Password
                     </button>
-
                 </div>
             </div>
         </div>
