@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { NavLink } from 'react-router-dom';
+import Logo from './Logo';
 
 function Header() {
 
@@ -54,7 +55,7 @@ function Header() {
         <>
             <header className='sticky top-0 z-10'>
                 <div className='flex justify-between p-2 items-center bg-[#55AD9B] text-[#F1F8E8] w-full'>
-                    <img src="" alt="LOGO" />
+                    <Logo />
                     <div className='text-3xl sm:hidden cursor-pointer select-none fixed top-2 right-4 z-50' onClick={handleHamburger}>
                         <GiHamburgerMenu />
                     </div>
