@@ -22,7 +22,7 @@ function Contact() {
                             <svg className="h-6 w-6 text-gray-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12H8m8 0a4 4 0 10-8 0 4 4 0 008 0zM8 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            react@gmail.com
+                            manager@gmail.com
                         </p>
                     </div>
                 </div>
